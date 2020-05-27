@@ -16,7 +16,7 @@ fi
 if [[ "$(cat /etc/os-release | grep ID_LIKE)" == "ID_LIKE=debian" ]]; then
 	sudo apt-get install -y zsh gocryptfs
 else
-	sudo pacman -S --no-confirm zsh gocryptfs
+	sudo pacman -S --noconfirm zsh gocryptfs
 fi
 
 sudo groupadd ask-password || true
