@@ -9,8 +9,8 @@ echo "Initializing work ennvironment..."
 
 if [[ ! -d "$HOME/.private" ]]; then
 	git clone https://github.com/"$GHUSER"/private "$HOME/.private"
-else
-	cd "$HOME/.private" && git reset --hard && git pull
+# else
+#	cd "$HOME/.private" && git reset --hard && git pull
 fi
 
 if [[ "$(cat /etc/os-release | grep ID_LIKE)" == "ID_LIKE=debian" ]]; then
@@ -19,9 +19,11 @@ else
 	sudo pacman -S --noconfirm zsh gocryptfs
 fi
 
+sudo chsh -s $(which zsh) $USER
+
 sudo groupadd ask-password || true
-sudo setfacl -m g:ask-password:rwx /run/systemd/ask-password
-sudo usermod -G ask-password -s $(which zsh) $USER
+sudo setfacl -m g:ask-password:wx /run/systemd/ask-password
+sudo usermod -a -G ask-password $USER
 
 cd $HOME
 git remote remove origin
@@ -31,6 +33,6 @@ cd $HOME/.private
 git remote remove origin
 git remote add origin git@github:${GHUSER}/private.git
 
-systemctl --user enable --now workenv
-systemd-tty-ask-password-agent --query
+systemctl --user enable --now workenv.target
+sudo systemd-tty-ask-password-agent --query
 

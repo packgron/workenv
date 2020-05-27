@@ -1,0 +1,58 @@
+#!/bin/zsh
+
+set -eu
+
+# Constants:
+DIR="$(cd $(dirname "$0") > /dev/null 2>&1 && pwd)"
+PACKAGES=(curl neovim jq)
+
+
+# Includes:
+# source $HOME/private/secrets
+
+
+# Entry functions:
+_usage () {
+	cat <<EOF
+Usage: pacsync { sync | clean }
+
+ Cross device package sync.
+
+Commands:	
+ sync	Sync minimal required packages.
+ base	Clean system to only sync packages.
+ help   Print this help message.
+
+EOF
+}
+
+_sync () {
+	sudo pacman -S $PACKAGES
+}
+
+_clean () {
+	echo "TODO" >&2
+	exit 1
+}
+
+# Util functions (__util):
+# __util () {}
+
+
+# Arguments:
+cat >&2 <<WARN
+SCRIPT IS WORK IN PROGRESS
+
+TODOs:
+ - multi distro (arch / dev), currently only arch
+ - some kind of package file
+
+WARN
+
+case ${1:-s} in
+	s*) _sync ;;
+	c*) _clean ;;
+	h*) _usage ;;
+	*)  _usage ; exit 1 ;;
+esac
+

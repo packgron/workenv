@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+set -eu
+
+# Constants:
+DIR="$(cd $(dirname "$0") > /dev/null 2>&1 && pwd)"
+TMPL="$0"
+
+
+# Includes:
+# source $HOME/private/secrets
+
+
+# Entry functions:
+_usage () {
+	cat <<EOF
+Usage: tmpl make <name>
+
+ Shell script template and tempate maker.
+
+Commands:	
+ make	Generate a template of a given name.
+ help   Print this help message.
+
+EOF
+}
+
+_make () {
+	local _name=$1
+	cp "$TMPL" "$DIR/$_name"
+}
+
+
+# Util functions (__util):
+# __util () {}
+
+
+# Arguments:
+case ${1:-h} in
+	m*) shift ; _make $@ ;;
+	h*) _usage ;;
+	*)  _usage ; exit 1 ;;
+esac
+

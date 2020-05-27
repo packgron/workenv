@@ -1,6 +1,8 @@
+.ssh/
+.cache/
+.history
 *.wants/
 *.requires/
 .private
 private
-.history
 
