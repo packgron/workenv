@@ -1,0 +1,9 @@
+[Unit]
+Description=Work Environment Login Session
+After=private.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/we login
+RemainAfterExit=yes
+ExecStop=%h/.local/bin/we logout

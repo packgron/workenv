@@ -1,0 +1,14 @@
+[Unit]
+Description=Tester
+
+[Service]
+Type=oneshot
+ExecStart=env
+
+#ExecStart=keyctl show
+#ExecStart=+keyctl show
+#ExecStart=-systemd-ask-password
+
+[Install]
+WantedBy=default.target
+

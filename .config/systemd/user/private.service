@@ -1,0 +1,8 @@
+[Unit]
+Description=Private Crypto Dir
+
+[Service]
+Type=simple
+
+ExecStartPre=mkdir -p %h/private
+ExecStart=gocryptfs -fg -extpass 'systemd-ask-password "PD Master Password:"' %h/.private %h/private

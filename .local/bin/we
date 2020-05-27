@@ -1,0 +1,33 @@
+#!/usr/bin/zsh
+
+set -eu
+
+
+_usage () {
+
+}
+
+_login () {
+	echo "login $(date)" >> $HOME/.we-log
+	exit 0
+}
+
+_logout () {
+	echo "logout $(date)" >> $HOME/.we-log
+	exit 0
+}
+
+
+case ${1:-h} in
+	logi*)
+		shift
+		_login $@
+		;;
+	logo*)
+		shift
+		_logout $@
+		;;
+	*)
+		_usage
+		;;
+esac

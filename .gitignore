@@ -1,0 +1,6 @@
+*.wants/
+*.requires/
+.private
+private
+.history
+

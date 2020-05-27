@@ -1,0 +1,6 @@
+[Unit]
+Description=Work Environment Target
+Requires=workenv.service private.service
+
+[Install]
+WantedBy=default.target

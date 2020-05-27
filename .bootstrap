@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eu
+
+DIR="$(cd $(dirname "${BASH_SOURCE[0]}") > /dev/null 2>&1 && pwd)"
+GHUSER="$1"
+
+echo "Initializing work ennvironment..."
+
+if [[ ! -d "$HOME/.private" ]]; then
+	git clone https://github.com/"$GHUSER"/private "$HOME/.private"
+else
+	cd "$HOME/.private" && git reset --hard && git pull
+fi
+
+if [[ "$(cat /etc/os-release | grep ID_LIKE)" == "ID_LIKE=debian" ]]; then
+	sudo apt-get install -y zsh gocryptfs
+else
+	sudo pacman -S --no-confirm zsh gocryptfs
+fi
+
+sudo groupadd ask-password || true
+sudo setfacl -m g:ask-password:rwx /run/systemd/ask-password
+sudo usermod -G ask-password -s $(which zsh) $USER
+
+cd $HOME
+git remote remove origin
+git remote add origin git@github:${GHUSER}/workenv.git
+
+cd $HOME/.private
+git remote remove origin
+git remote add origin git@github:${GHUSER}/private.git
+
+systemctl --user enable --now workenv
+systemd-tty-ask-password-agent --query
+
