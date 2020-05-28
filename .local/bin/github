@@ -1,0 +1,68 @@
+#!/bin/zsh
+
+set -eu
+
+# Constants:
+DIR="$(cd $(dirname "$0") > /dev/null 2>&1 && pwd)"
+SSH_KEY=$(cat $HOME/.ssh/*.pub | sed 's/^\(.*\s.*\)\s\(.*\)$/\1,\2/')
+SSH_USER="$(dbus-uuidgen)-${SSH_KEY#*,}-"
+SSH_KEY=${SSH_KEY%,*}
+
+# Includes:
+source $HOME/private/secrets
+
+
+# Entry functions:
+_usage () {
+	cat <<EOF
+Usage: github { list | add | del <id> }
+ 
+ github.com ssh identity helper.
+
+Commands:
+ list	List current keys.
+ add	Add current users identity.
+ del	Delete specified identity.
+
+EOF
+}
+
+_list () {
+	#curl -q -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/users/$GITHUB_USER/keys 2> /dev/null
+	curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user/keys
+}
+
+_add () {
+	echo "Already added?"
+	local _added=$(_list | jq -r '[.[].key == $ARGS.positional[0]] | any' --args $SSH_KEY)
+	echo "$_added"
+
+	[[ "$_added" == "true" ]] && return
+	
+	echo "Adding $SSH_KEY as $SSH_USER"
+	curl -s -X POST \
+		-H "Authorization: token $GITHUB_TOKEN" \
+		-H "Content-Type: application/json" \
+		-d "{ \"key\": \"$SSH_KEY\", \"title\": \"$SSH_USER\" }" \
+		https://api.github.com/user/keys
+}
+
+_del () {
+	local _id=$1
+	curl -s -X DELETE -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user/keys/$_id
+}
+
+
+# Util functions (__util):
+# __util () {}
+
+
+# Arguments:
+case ${1:-h} in
+	l*) shift ; _list $@ ;;
+	a*) shift ; _add $@ ;;
+	d*) shift ; _del $@ ;;
+	h*) _usage ;;
+	*)  _usage ; exit 1 ;;
+esac
+
