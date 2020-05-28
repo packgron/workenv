@@ -27,11 +27,11 @@ sudo usermod -a -G ask-password $USER
 
 cd $HOME
 git remote remove origin
-git remote add origin git@github:${GHUSER}/workenv.git
+git remote add origin git@github.com:${GHUSER}/workenv.git
 
 cd $HOME/.private
 git remote remove origin
-git remote add origin git@github:${GHUSER}/private.git
+git remote add origin git@github.com:${GHUSER}/private.git
 
 systemctl --user enable --now workenv.target
 sudo systemd-tty-ask-password-agent --query
