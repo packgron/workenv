@@ -4,6 +4,10 @@ After=private.service
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/we login
+
+ExecStart=%h/.local/bin/pacsync
+ExecStart=%h/.local/bin/github add
+ExecStart=%h/.local/bin/wesync
+ExecStart=%h/.local/bin/pacsync
 RemainAfterExit=yes
-ExecStop=%h/.local/bin/we logout
+ExecStop=%h/.local/bin/wesync

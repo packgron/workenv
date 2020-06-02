@@ -4,7 +4,8 @@ set -eu
 
 # Constants:
 DIR="$(cd $(dirname "$0") > /dev/null 2>&1 && pwd)"
-PACKAGES=(curl neovim jq)
+
+PACKAGES=(curl neovim jq tmux elinks)
 
 
 # Includes:
@@ -27,7 +28,7 @@ EOF
 }
 
 _sync () {
-	sudo pacman -S $PACKAGES
+	sudo pacman -S --noconfirm --needed $PACKAGES
 }
 
 _clean () {

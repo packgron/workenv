@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+set -eu
+
+# Constants:
+DIR="$(cd $(dirname "$0") > /dev/null 2>&1 && pwd)"
+
+
+# Includes:
+# source $HOME/private/secrets
+
+
+# Entry functions:
+_usage () {
+	cat <<EOF
+Usage: wesync [sync]
+
+ Work environment sync util.
+
+Commands:	
+ sync	Sync all files and .git subdirs to remote locations.
+ help   Print this help message.
+
+EOF
+}
+
+_sync () {
+	cd $HOME
+	#TODO sync $HOME, $HOME/.private, $HOME/**/*.git/ where needed
+}
+
+
+# Util functions (__util):
+# __util () {}
+
+
+# Arguments:
+case ${1:-s} in
+	s*) shift ; _make $@ ;;
+	h*) _usage ;;
+	*)  _usage ; exit 1 ;;
+esac
+

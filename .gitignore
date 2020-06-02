@@ -1,8 +1,24 @@
+# PC Local Dot Files
 .ssh/
 .cache/
 .history
+.bash_history
+.zsh_history
+.lesshst
 *.wants/
 *.requires/
+.gitconfig
+
+# nvim
+.config/nvim/.netrwhist
+.local/share/nvim/
+
+# elinks
+.elinks/cookies
+
+# Private Dir
 .private
 private
 
+# External git's
+*.git/
