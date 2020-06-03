@@ -17,8 +17,11 @@
 
 # elinks
 .elinks/cookies
+.elinks/globhist
 
 # Private Dir
 .private
 private
 
+# git
+!.git/HEAD
