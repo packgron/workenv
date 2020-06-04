@@ -24,7 +24,6 @@ tmux - ArchWiki	https://wiki.archlinux.org/index.php/tmux	1591114496
 Difference between Login Shell and Non-Login Shell? - Unix & Linux Stack Exchange	https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell	1591115218
 tmux - ArchWiki	https://wiki.archlinux.org/index.php/Tmux	1591115219
 Antigen | A plugin manager for zsh, inspired by oh-my-zsh and vundle.	https://antigen.sharats.me/	1591120536
-GitHub - ohmyzsh/ohmyzsh: **** A delightful community-driven (with 1500+ contributors) framework for managing your zsh configuration. Includes 200+ optional plugins (rails, git, OSX, hub, capistrano, brew, ant, php, python, etc), over 140 themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community.	https://github.com/ohmyzsh/ohmyzsh	1591123059
 Arch User Repository - ArchWiki	https://wiki.archlinux.org/index.php/Arch_User_Repository	1591124027
 AUR (en) - Packages	https://aur.archlinux.org/packages/	1591124064
 AUR (en) - Search Criteria: yay	https://aur.archlinux.org/packages/?O=0&SeB=nd&K=yay&outdated=&SB=n&SO=a&PP=50	1591124098
@@ -46,5 +45,8 @@ tty - How can I make a psf font for the console from a otf one? - Unix & Linux S
 GitHub - fonttools/fonttools: A library to manipulate font files from Python.	https://github.com/fonttools/fonttools	1591130260
 Point (typography) - Wikipedia	https://en.wikipedia.org/wiki/Point_(typography)	1591131896
 Point size | Butterick***s Practical Typography	https://practicaltypography.com/point-size.html	1591132021
-DuckDuckGo	https://duckduckgo.com/lite/	1591132813
 Linux console - ArchWiki	https://wiki.archlinux.org/index.php/Console_fonts	1591132843
+https://github.com/ohmyzsh/ohmyzsh/find/	https://github.com/ohmyzsh/ohmyzsh/find/	1591292937
+File Finder . GitHub	https://github.com/ohmyzsh/ohmyzsh/find/master	1591292937
+GitHub - ohmyzsh/ohmyzsh: **** A delightful community-driven (with 1500+ contributors) framework for managing your zsh configuration. Includes 200+ optional plugins (rails, git, OSX, hub, capistrano, brew, ant, php, python, etc), over 140 themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community.	https://github.com/ohmyzsh/ohmyzsh	1591292938
+DuckDuckGo	https://duckduckgo.com/lite/	1591294503
