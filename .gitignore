@@ -19,9 +19,16 @@
 .elinks/cookies
 .elinks/globhist
 
+# ranger
+.local/share/ranger/*
+
 # Private Dir
 .private
 private
 
 # git
 !.git/HEAD
+
+# Home dir basics
+downloads/*
+!donwloads/.gitkeep

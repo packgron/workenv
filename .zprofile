@@ -6,7 +6,7 @@
 export EDITOR=nvim
 export TBROWSER=elinks
 export WWW_HOME=https://duckduckgo.com
-
+export FILEMANAGER=ranger
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
