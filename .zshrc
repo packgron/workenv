@@ -100,5 +100,10 @@ alias ssc="sudo systemctl"
 alias scu="systemctl --user"
 alias pr="sudo systemd-tty-ask-password-agent --query"
 
-[[ $- == *i* ]] && [[ -z "$TMUX" ]] && exec tmux
+[[ -s /home/pna/.autojump/etc/profile.d/autojump.sh ]] && source /home/pna/.autojump/etc/profile.d/autojump.sh
 
+autoload -U compinit && compinit -u
+
+# [[ $- == *i* ]] && [[ -z "$TMUX" ]] && exec tmux
+
+source "$HOME/.cargo/env"

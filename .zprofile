@@ -7,6 +7,7 @@ export EDITOR=nvim
 export TBROWSER=elinks
 export WWW_HOME=https://duckduckgo.com
 export FILEMANAGER=ranger
+export SSH_AUTH_SOCK="$HOME/.ssh/ssh-agent.sock"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
@@ -21,3 +22,5 @@ if [ -n "$ZSH_VERSION" ]; then
     fi
 fi
 
+
+source "$HOME/.cargo/env"

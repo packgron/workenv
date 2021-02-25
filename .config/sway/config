@@ -16,21 +16,25 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 
-set $browser firefox
+# set $browser firefoxw
+set $browser vimb
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -S run 
 
-xwayland disable
+# xwayland disable
+xwayland enabled
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-output * scale 2
+output eDP-1 scale 2
+
+gaps inner 8
 
 #
 # Example configuration:
@@ -88,11 +92,14 @@ input type:touchpad {
     # mouse button for dragging.
     floating_modifier $mod normal
 
+    # Screenshot
+    bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exit 
 #
 # Moving around:
 #
@@ -150,8 +157,8 @@ input type:touchpad {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Control+$down splitv
+    bindsym $mod+Control+$right splith
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
